@@ -1,1 +1,31 @@
 This is a placeholder for our CSC670 group project
+A git cheatsheet follows:
+
+Git clients:
+For windows, Git Extensions is a good one that has both command line and GUI.  It also claims to have a Visual Studio plugin, but I couldn't figure it out.  http://code.google.com/p/gitextensions/
+It contains everything you will need in order to use Git.  
+
+From the command line:
+run these two commands:
+
+git config --global user.name "Firstname Lastname"
+git config --global user.email "your_email@youremail.com"
+
+cd to whatever directory you want to store your copy of the files in.  Don't use our shared Dropbox directory.  It should be private to your system.  Then run this command to check out the code, and initialize your local repo.
+
+git clone git@github.com:jonfhancock/CSC670.git
+
+After adding any files, run:
+git add *
+
+After changing or adding a file, run:
+git commit -m "Your commit message"
+
+After you commit something, run:
+git push origin master -u
+
+
+Commit and push often, and in small chunks so we avoid collisions.
+
+
+
