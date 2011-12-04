@@ -1,0 +1,701 @@
+
+/*---------------------------------------------------------
+Create The Database
+---------------------------------------------------------*/
+Project SQL  
+
+USE [master]
+GO
+
+/****** Object:  Database [POS]    Script Date: 12/3/2011 11:38:46 ******/
+CREATE DATABASE [POS] ON  PRIMARY 
+( NAME = N'POS', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\DATA\POS.mdf' , SIZE = 2048KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+ LOG ON 
+( NAME = N'POS_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\DATA\POS_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+GO
+
+ALTER DATABASE [POS] SET COMPATIBILITY_LEVEL = 100
+GO
+
+/*-----------------------------------------------------------
+Create Tables for POS System
+-----------------------------------------------------------*/
+
+CREATE TABLE pos_employee (
+  fname    varchar(15) not null, 
+  lname    varchar(15) not null,
+  eid      varchar(3),
+  hdate    date,
+  tdate    date,
+  address  varchar(50),
+  primary key (eid));
+
+
+CREATE TABLE pos_customer(  
+  custid   char(7) not null,
+  fname    varchar(15) not null, 
+  lname    varchar(15) not null,
+  address  varchar(50), 
+  primary key (custid));
+
+
+
+CREATE TABLE pos_payment_type_bridge(      
+  ptypeid  char(1),
+  type     varchar(5) not null, 
+  primary key (ptypeid)); 
+
+
+
+CREATE TABLE pos_products(          
+  pid        varchar(10) not null,
+  pdescript  varchar(25) not null, 
+  price      decimal (7,2) not Null,
+  pqtyonhand integer not null,
+  primary key (pid));
+
+
+
+CREATE TABLE pos_items_sold(            
+  saleid      integer not null,
+  itemid      varchar(10) not Null references pos_products(pid),
+  qtysold     integer not null,
+  priceatsale decimal (7,2) null);
+
+ 
+
+
+
+CREATE TABLE pos_temp_items_sold(
+  saleid int NOT NULL,
+  itemid varchar(10) NOT NULL,
+  qtysold int NOT NULL,
+  priceatsale decimal (7, 2) NULL);
+
+CREATE TABLE pos_Sales( 
+  sid	   integer,
+  sdate    date,
+  paytype  char(1) references pos_payment_type_bridge (ptypeid),
+  empid    varchar(3) references pos_employee(eid), 
+  cid      char(7) not null references pos_customer(custid),
+  primary key (sid)); 
+
+
+
+/*-----------------------------------------------------------
+Insert Data for POS system
+-----------------------------------------------------------*/
+
+INSERT INTO pos_employee VALUES
+  ('Craig'     ,'Mersereau',   '123','29-JAN-2007',null,'81 Jessica St., Las Vegas, NV');
+INSERT INTO pos_employee VALUES
+  ('Martin'  ,'Colmenares' ,   '987','02-NOV-2011',null,'1234 Aero Court, San Diego, CA');
+INSERT INTO pos_employee VALUES
+  ('Brandt',  'Daniels'    ,   '999','01-NOV-2011',null,'789 S. Hotel Circle, San Diego, CA');
+INSERT INTO pos_employee VALUES
+  ('Fernandito', 'Eugenio'    ,'888','01-NOV-2011',null,'615 S. Nimitz Hwy, San Diego, CA');
+INSERT INTO pos_employee VALUES
+  ('Jon', 'Hancock'    ,       '555','15-AUG-2011',null,'505 Main St., Fresno, CA');
+
+
+INSERT INTO pos_payment_type_bridge VALUES 
+  ('1', 'MC');
+
+INSERT INTO pos_payment_type_bridge VALUES 
+  ('2', 'Visa');
+
+INSERT INTO pos_payment_type_bridge VALUES 
+  ('3', 'Disc');
+
+INSERT INTO pos_payment_type_bridge VALUES 
+  ('4', 'Check');
+
+INSERT INTO pos_payment_type_bridge VALUES 
+  ('5', 'Cash');
+
+
+
+INSERT INTO pos_products VALUES 
+    ( '001', 'Oracle', 400.00, 10);
+INSERT INTO pos_products VALUES 
+    ( '002', 'Visual Studio', 500.00, 5);
+INSERT INTO pos_products VALUES 
+    ( '010', 'Mac Book Pro', 1700.00, 3);
+INSERT INTO pos_products VALUES 
+    ( '020', 'Black Ops - PC', 42.99, 15);
+INSERT INTO pos_products VALUES 
+    ( '021', 'Black Ops - 360', 42.99, 20);
+INSERT INTO pos_products VALUES 
+    ( '101', '16 Gig Thumb Drive', 49.99, 100);
+
+
+
+INSERT INTO pos_customer values
+('2491000', 'Derrik'    , 'McCoughlin'    , '1254 Disney Way, Anahiem CA');
+INSERT INTO pos_customer values
+('2490001', 'Jerry'   , 'Copper'       , '1984 Path to Six Flags Way');
+INSERT INTO pos_customer values
+('2491010', 'Gary'   , 'Stevens'       , '1355 East Fiesta Circle');
+ 
+
+
+INSERT INTO pos_items_sold values
+(1, '020', 1, 59.99);
+INSERT INTO pos_items_sold values
+(1, '101', 1, 49.99);
+INSERT INTO pos_items_sold values
+(2, '001', 1, 400.00);
+INSERT INTO pos_items_sold values
+(2, '002', 1, 500.00);
+INSERT INTO pos_items_sold values
+(2, '010', 1, 1700.00);
+INSERT INTO pos_items_sold values
+(3, '101', 2, 49.99);
+
+
+
+INSERT INTO pos_Sales VALUES 
+  (1, '02-MAY-2011', '1', '123', '2491010');
+INSERT INTO pos_Sales  VALUES
+  (2, '02-MAY-2011', '2', '123', '2490001');
+INSERT INTO pos_Sales  VALUES
+  (3, '02-MAY-2011', '1', '123', '2491000');
+
+
+/*-------------------------------------------------------------------------------
+Stored Procedures Made for interaction from the POS DB and the APP
+-------------------------------------------------------------------------------*/
+USE [POS]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Proc_AddNewCustomer]    Script Date: 12/3/2011 11:42:14 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+CREATE PROCEDURE [dbo].[Proc_AddNewCustomer]
+@@cid varchar(7),
+@@fname varchar(15),
+@@lname varchar(15),
+@@address varchar(50)
+
+AS
+
+insert into pos_customer values
+(
+@@cid,
+@@fname,
+@@lname,
+@@address
+)
+
+
+
+GO
+
+
+
+USE [POS]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Proc_AddNewEmployee]    Script Date: 12/3/2011 11:42:36 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+CREATE PROCEDURE [dbo].[Proc_AddNewEmployee]
+@@fname varchar(15),
+@@lname varchar(15),
+@@eid varchar(3),
+@@hdate date,
+@@address varchar(50)
+
+AS
+
+insert into pos_employee (fname, lname, eid, hdate, address) values
+(
+@@fname,
+@@lname,
+@@eid,
+@@hdate,
+@@address
+)
+
+
+
+
+GO
+
+USE [POS]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Proc_AddNewProduct]    Script Date: 12/3/2011 11:42:53 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+CREATE PROCEDURE [dbo].[Proc_AddNewProduct]
+@@pid varchar(10),
+@@pdescript varchar(25),
+@@pqtyonhand decimal(7,2),
+@@price int
+
+AS
+
+insert into pos_products values
+(
+@@pid,
+@@pdescript,
+@@price,
+@@pqtyonhand
+)
+
+
+
+GO
+
+
+
+USE [POS]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Proc_AllCustomerList]    Script Date: 12/03/2011 08:05:37 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+CREATE PROCEDURE [dbo].[Proc_AllCustomerList]
+AS
+
+select 
+c.custid,
+c.fname,
+c.lname,
+c.address
+
+from 
+
+pos_customer as c
+
+return (0)
+
+
+
+GO
+
+USE [POS]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Proc_AllEmployeeIds]    Script Date: 12/3/2011 11:43:29 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+CREATE PROCEDURE [dbo].[Proc_AllEmployeeIds]
+AS
+
+select 
+e.eid
+
+from 
+
+pos_employee as e
+
+
+
+return (0)
+
+
+
+GO
+
+
+USE [POS]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Proc_AllEmployeeList]    Script Date: 12/03/2011 08:06:27 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE PROCEDURE [dbo].[Proc_AllEmployeeList]
+AS
+
+select 
+e.eid,
+e.fname,
+e.lname,
+e.address,
+e.hdate,
+e.tdate
+
+from 
+
+pos_employee as e
+
+
+
+return (0)
+
+
+GO
+
+
+
+USE [POS]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Proc_CustomerLookUp]    Script Date: 12/03/2011 08:06:48 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+CREATE PROCEDURE [dbo].[Proc_CustomerLookUp]
+@@custid char(7)
+AS
+
+select 
+c.custid,
+c.fname,
+c.lname,
+c.address
+
+from 
+
+pos_customer as c
+
+where      c.custid = @@custid
+
+
+
+GO
+
+
+
+USE [POS]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Proc_EmployeeLookUpForASale]    Script Date: 12/03/2011 08:07:09 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+CREATE PROCEDURE [dbo].[Proc_EmployeeLookUpForASale]
+@@empid char(3)
+AS
+
+
+select 
+
+e.fname,
+e.lname
+
+from 
+
+pos_employee as e
+
+where      e.eid = @@empid
+
+
+
+
+GO
+
+
+USE [POS]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Proc_InsertSale]    Script Date: 12/03/2011 08:07:39 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+CREATE PROCEDURE [dbo].[Proc_InsertSale]
+@@sid int,
+@@d   Date,
+@@ptype int,
+@@empId varchar(3),
+@@cId varchar(7)
+
+AS
+
+/* Start a transaction*/
+
+/*
+Move items from pos_Temp_items_sold into 
+pos_items_sold for the saleID and remove the items
+*/
+
+INSERT INTO pos_items_sold (saleid, itemid, priceatsale, qtysold)
+Select saleid, itemid, priceatsale, qtysold
+FROM pos_temp_items_sold
+WHERE pos_temp_items_sold.saleid = @@sid
+
+
+Update pos_products
+
+set pqtyonhand = pqtyonhand - ps.qtysold
+from pos_products AS p
+inner join pos_items_sold as
+ps on p.pid = ps.itemid
+where ps.saleid = @@sid
+
+
+
+INSERT INTO pos_Sales values
+(
+@@sid,
+@@d,
+@@ptype,
+@@empId,
+@@cId
+
+)
+
+
+
+Delete from pos_temp_items_sold
+where pos_temp_items_sold.saleid = @@sid
+
+/* End the transaction */
+
+
+
+
+GO
+
+USE [POS]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Proc_ItemSold]    Script Date: 12/03/2011 08:08:06 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+
+
+CREATE PROCEDURE [dbo].[Proc_ItemSold]
+@@sid int,
+@@pid varchar(10),
+@@qSold int,
+@@sPrice decimal
+
+
+AS
+
+INSERT INTO pos_Temp_items_sold values
+(
+@@sid,
+@@pid,
+@@qSold,
+@@sPrice
+)
+
+
+GO
+
+
+USE [POS]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Proc_NextSaleId]    Script Date: 12/03/2011 08:08:26 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+
+CREATE PROCEDURE [dbo].[Proc_NextSaleId]
+
+AS
+
+
+SELECT  MAX(sid) 
+AS lastId
+FROM dbo.pos_sales
+
+
+
+
+
+GO
+
+
+USE [POS]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Proc_PossiblePayments]    Script Date: 12/3/2011 11:44:59 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+CREATE PROCEDURE [dbo].[Proc_PossiblePayments]
+AS
+
+select 
+p.type
+
+from 
+
+pos_payment_type_bridge as p
+
+
+
+GO
+
+
+
+USE [POS]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Proc_ProductForItemList]    Script Date: 12/03/2011 08:08:55 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+CREATE PROCEDURE [dbo].[Proc_ProductForItemList]
+@@pid varchar(10)
+AS
+
+select 
+
+p.pdescript,
+p.price
+
+from 
+
+pos_products as p
+
+where p.pid = @@pid
+
+
+
+GO
+
+
+
+
+USE [POS]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Proc_ProductLookupForASale]    Script Date: 12/03/2011 08:09:16 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+CREATE PROCEDURE [dbo].[Proc_ProductLookupForASale]
+@@pid varchar(10)
+AS
+
+select 
+p.pid,
+p.pdescript,
+p.pqtyonhand,
+p.price
+
+from 
+
+pos_products as p
+
+where p.pid = @@pid
+
+
+
+GO
+
+
+USE [POS]
+GO
+
+/****** Object:  StoredProcedure [dbo].[Proc_ShowProductInventory]    Script Date: 12/03/2011 08:09:34 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE PROCEDURE [dbo].[Proc_ShowProductInventory]
+AS
+
+select 
+
+p.pid,
+p.pdescript,
+p.pqtyonhand,
+p.price
+
+from 
+
+pos_products as p
+
+
+return (0)
+
+
+GO
+
+
+
+
+

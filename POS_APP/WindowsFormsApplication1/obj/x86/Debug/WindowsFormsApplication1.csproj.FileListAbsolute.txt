@@ -1,0 +1,44 @@
+C:\Users\merserc\Dropbox\MSCS\DB\DB project\App Code\POS_APP\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\merserc\Dropbox\MSCS\DB\DB project\App Code\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.csproj.ResolveComReference.cache
+C:\Users\merserc\Dropbox\MSCS\DB\DB project\App Code\POS_APP\WindowsFormsApplication1\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\merserc\Dropbox\MSCS\DB\DB project\App Code\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.AddCustomersForm.resources
+C:\Users\merserc\Dropbox\MSCS\DB\DB project\App Code\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.EmployeeForm.resources
+C:\Users\merserc\Dropbox\MSCS\DB\DB project\App Code\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.CustomerForm.resources
+C:\Users\merserc\Dropbox\MSCS\DB\DB project\App Code\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.ProductsListForm.resources
+C:\Users\merserc\Dropbox\MSCS\DB\DB project\App Code\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.MainForm.resources
+C:\Users\merserc\Dropbox\MSCS\DB\DB project\App Code\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.SalesForm.resources
+C:\Users\merserc\Dropbox\MSCS\DB\DB project\App Code\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\merserc\Dropbox\MSCS\DB\DB project\App Code\POS_APP\WindowsFormsApplication1\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\merserc\Dropbox\MSCS\DB\DB project\App Code\POS_APP\WindowsFormsApplication1\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\merserc\Dropbox\MSCS\DB\DB project\App Code\POS_APP\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\merserc\Dropbox\MSCS\DB\DB project\App Code\POS_APP\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\merserc\Dropbox\MSCS\DB\DB project\App Code\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.exe
+C:\Users\merserc\Dropbox\MSCS\DB\DB project\App Code\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.pdb
+C:\Users\merserc\Dropbox\MSCS\DB\DB project\App Code\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.AddCustForm.resources
+C:\Users\merserc\Dropbox\MSCS\DB\DB project\App Code\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.AddEmpForm.resources
+C:\UI Class Code\POS_APP\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\UI Class Code\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.csproj.ResolveComReference.cache
+C:\UI Class Code\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.exe
+C:\UI Class Code\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.pdb
+C:\Projects\POS_APP\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Projects\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.csproj.ResolveComReference.cache
+C:\Projects\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.exe
+C:\Projects\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.pdb
+C:\Projects\POS_APP\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Projects\POS_APP\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Projects\POS_APP\WindowsFormsApplication1\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Projects\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.AddCustomersForm.resources
+C:\Projects\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.EmployeeForm.resources
+C:\Projects\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.CustomerForm.resources
+C:\Projects\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.AddCustForm.resources
+C:\Projects\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.AddEmpForm.resources
+C:\Projects\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.ProductsListForm.resources
+C:\Projects\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.MainForm.resources
+C:\Projects\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.SalesForm.resources
+C:\Projects\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Projects\POS_APP\WindowsFormsApplication1\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Projects\POS_APP\WindowsFormsApplication1\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Projects\CSC670\POS_APP\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Projects\CSC670\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.csproj.ResolveComReference.cache
+C:\Projects\CSC670\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.exe
+C:\Projects\CSC670\POS_APP\WindowsFormsApplication1\obj\x86\Debug\WindowsFormsApplication1.pdb
