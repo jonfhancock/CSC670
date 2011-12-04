@@ -23,8 +23,10 @@ git commit -m "Your commit message"
 
 After you commit something, run:
 git push origin master -u
+
 After the first time you push, you can just use:
 git push
+
 
 
 Commit and push often, and in small chunks so we avoid collisions.
