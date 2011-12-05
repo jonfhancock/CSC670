@@ -35,7 +35,7 @@
             this.empIdLabel = new System.Windows.Forms.Label();
             this.empAddressTextBox = new System.Windows.Forms.TextBox();
             this.custAddressLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.hireDateLabel = new System.Windows.Forms.Label();
             this.hiredateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.AddButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -96,14 +96,14 @@
             this.custAddressLabel.TabIndex = 18;
             this.custAddressLabel.Text = "Address:";
             // 
-            // label1
+            // hireDateLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 145);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Hire Date:";
+            this.hireDateLabel.AutoSize = true;
+            this.hireDateLabel.Location = new System.Drawing.Point(17, 145);
+            this.hireDateLabel.Name = "hireDateLabel";
+            this.hireDateLabel.Size = new System.Drawing.Size(55, 13);
+            this.hireDateLabel.TabIndex = 19;
+            this.hireDateLabel.Text = "Hire Date:";
             // 
             // hiredateTimePicker
             // 
@@ -130,7 +130,7 @@
             this.ClientSize = new System.Drawing.Size(580, 215);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.hiredateTimePicker);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.hireDateLabel);
             this.Controls.Add(this.empAddressTextBox);
             this.Controls.Add(this.custAddressLabel);
             this.Controls.Add(this.empIDTextBox);
@@ -154,7 +154,7 @@
         private System.Windows.Forms.Label empIdLabel;
         private System.Windows.Forms.TextBox empAddressTextBox;
         private System.Windows.Forms.Label custAddressLabel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label hireDateLabel;
         private System.Windows.Forms.DateTimePicker hiredateTimePicker;
         private System.Windows.Forms.Button AddButton;
     }

@@ -56,7 +56,7 @@ namespace WindowsFormsApplication1
                     });
 
                     ListViewItem lvi = new ListViewItem(sitems);
-                    this.listView1.Items.Add(lvi);
+                    this.prodListView.Items.Add(lvi);
                 }
 
                 rdr.Close();

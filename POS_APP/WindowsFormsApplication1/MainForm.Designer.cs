@@ -84,7 +84,7 @@
             this.Controls.Add(this.ProductsButton);
             this.Controls.Add(this.CustomerButton);
             this.Name = "MainForm";
-            this.Text = "POS - DB Project";
+            this.Text = "Appology\'s Point Of Sale";
             this.ResumeLayout(false);
 
         }

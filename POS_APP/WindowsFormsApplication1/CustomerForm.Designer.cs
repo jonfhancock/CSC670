@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.formDescLabel = new System.Windows.Forms.Label();
             this.CloseButton = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.custListView = new System.Windows.Forms.ListView();
             this.idcolumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.fnamecolumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lnamecolumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -38,14 +38,14 @@
             this.AddButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // formDescLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(181, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "This shows a list of all the customers.";
+            this.formDescLabel.AutoSize = true;
+            this.formDescLabel.Location = new System.Drawing.Point(34, 13);
+            this.formDescLabel.Name = "formDescLabel";
+            this.formDescLabel.Size = new System.Drawing.Size(181, 13);
+            this.formDescLabel.TabIndex = 1;
+            this.formDescLabel.Text = "This shows a list of all the customers.";
             // 
             // CloseButton
             // 
@@ -57,19 +57,19 @@
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
-            // listView1
+            // custListView
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.custListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.idcolumnHeader,
             this.fnamecolumnHeader,
             this.lnamecolumnHeader,
             this.addresscolumnHeader});
-            this.listView1.Location = new System.Drawing.Point(29, 40);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(638, 426);
-            this.listView1.TabIndex = 5;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.custListView.Location = new System.Drawing.Point(29, 40);
+            this.custListView.Name = "custListView";
+            this.custListView.Size = new System.Drawing.Size(638, 426);
+            this.custListView.TabIndex = 5;
+            this.custListView.UseCompatibleStateImageBehavior = false;
+            this.custListView.View = System.Windows.Forms.View.Details;
             // 
             // idcolumnHeader
             // 
@@ -107,9 +107,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(679, 523);
             this.Controls.Add(this.AddButton);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.custListView);
             this.Controls.Add(this.CloseButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.formDescLabel);
             this.Name = "CustomerForm";
             this.Text = "Customers";
             this.Load += new System.EventHandler(this.CustomerForm_Load);
@@ -120,9 +120,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label formDescLabel;
         private System.Windows.Forms.Button CloseButton;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView custListView;
         private System.Windows.Forms.ColumnHeader idcolumnHeader;
         private System.Windows.Forms.ColumnHeader fnamecolumnHeader;
         private System.Windows.Forms.ColumnHeader lnamecolumnHeader;

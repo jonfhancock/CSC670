@@ -18,6 +18,31 @@ GO
 ALTER DATABASE [POS] SET COMPATIBILITY_LEVEL = 100
 GO
 
+
+
+
+
+/****** Object:  Login [dbapp]    Script Date: 12/05/2011 06:28:53 ******/
+CREATE LOGIN [dbapp] WITH PASSWORD=N'mar', DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
+GO
+
+ALTER LOGIN [dbapp] DISABLE
+GO
+
+
+
+USE [POS]
+GO
+
+/****** Object:  User [dbapp]    Script Date: 12/05/2011 06:30:48 ******/
+GO
+
+CREATE USER [dbapp] FOR LOGIN [dbapp] WITH DEFAULT_SCHEMA=[dbo]
+GO
+
+
+
+
 USE [POS]
 GO
 

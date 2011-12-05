@@ -30,7 +30,7 @@
         {
             this.EmpHeaderLabel = new System.Windows.Forms.Label();
             this.CloseButton = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.empListView = new System.Windows.Forms.ListView();
             this.idcolumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.fnamecolumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lnamecolumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -58,21 +58,21 @@
             this.CloseButton.Text = "Close";
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
-            // listView1
+            // empListView
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.empListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.idcolumnHeader,
             this.fnamecolumnHeader,
             this.lnamecolumnHeader,
             this.addresscolumnHeader,
             this.hdatecolumnHeader,
             this.tdatecolumnHeader});
-            this.listView1.Location = new System.Drawing.Point(27, 48);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(768, 346);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.empListView.Location = new System.Drawing.Point(27, 48);
+            this.empListView.Name = "empListView";
+            this.empListView.Size = new System.Drawing.Size(768, 346);
+            this.empListView.TabIndex = 2;
+            this.empListView.UseCompatibleStateImageBehavior = false;
+            this.empListView.View = System.Windows.Forms.View.Details;
             // 
             // idcolumnHeader
             // 
@@ -121,7 +121,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(810, 448);
             this.Controls.Add(this.addButton);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.empListView);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.EmpHeaderLabel);
             this.Name = "EmployeeForm";
@@ -136,7 +136,7 @@
 
         private System.Windows.Forms.Label EmpHeaderLabel;
         private System.Windows.Forms.Button CloseButton;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView empListView;
         private System.Windows.Forms.ColumnHeader idcolumnHeader;
         private System.Windows.Forms.ColumnHeader fnamecolumnHeader;
         private System.Windows.Forms.ColumnHeader lnamecolumnHeader;

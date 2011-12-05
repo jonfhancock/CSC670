@@ -41,13 +41,13 @@
             this.custAddressLabel = new System.Windows.Forms.Label();
             this.custLnameTextBox = new System.Windows.Forms.TextBox();
             this.emplnameTextBox = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.empGroupBox = new System.Windows.Forms.GroupBox();
             this.empIDTextBox = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.custGroupBox = new System.Windows.Forms.GroupBox();
+            this.itemsGroupBox = new System.Windows.Forms.GroupBox();
             this.pricelabel = new System.Windows.Forms.Label();
             this.priceTextBox = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.descriptionLabel = new System.Windows.Forms.Label();
             this.iDescTextBox = new System.Windows.Forms.TextBox();
             this.itemsListView = new System.Windows.Forms.ListView();
             this.icolumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -56,25 +56,26 @@
             this.qcolumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tcolumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.AddItemButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.qtyLabel = new System.Windows.Forms.Label();
             this.itemEntryTextBox = new System.Windows.Forms.TextBox();
             this.qtyentrytextBox = new System.Windows.Forms.TextBox();
             this.ItemIDLabel = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.saleGroupBox = new System.Windows.Forms.GroupBox();
             this.payComboBox = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.paymentLabel = new System.Windows.Forms.Label();
             this.TotalTextBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.totalLabel = new System.Windows.Forms.Label();
             this.taxTextBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.taxLabel = new System.Windows.Forms.Label();
             this.subTotalTextBox = new System.Windows.Forms.TextBox();
             this.SubTotalLabel = new System.Windows.Forms.Label();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.procAllEmployeeIdsBindingSource)).BeginInit();
+            this.empGroupBox.SuspendLayout();
+            this.custGroupBox.SuspendLayout();
+            this.itemsGroupBox.SuspendLayout();
+            this.saleGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // empIdLabel
@@ -85,7 +86,7 @@
             this.empIdLabel.Size = new System.Drawing.Size(21, 13);
             this.empIdLabel.TabIndex = 0;
             this.empIdLabel.Text = "ID:";
-            //
+            // 
             // empNameLabel
             // 
             this.empNameLabel.AutoSize = true;
@@ -158,7 +159,6 @@
             this.custAddressLabel.TabIndex = 8;
             this.custAddressLabel.Text = "Address:";
             // 
-            // 
             // custLnameTextBox
             // 
             this.custLnameTextBox.Enabled = false;
@@ -177,19 +177,19 @@
             this.emplnameTextBox.TabIndex = 11;
             this.emplnameTextBox.TabStop = false;
             // 
-            // groupBox1
+            // empGroupBox
             // 
-            this.groupBox1.Controls.Add(this.empIDTextBox);
-            this.groupBox1.Controls.Add(this.emplnameTextBox);
-            this.groupBox1.Controls.Add(this.empNameAnsTextBox);
-            this.groupBox1.Controls.Add(this.empNameLabel);
-            this.groupBox1.Controls.Add(this.empIdLabel);
-            this.groupBox1.Location = new System.Drawing.Point(16, 26);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(562, 54);
-            this.groupBox1.TabIndex = 12;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Employee";
+            this.empGroupBox.Controls.Add(this.empIDTextBox);
+            this.empGroupBox.Controls.Add(this.emplnameTextBox);
+            this.empGroupBox.Controls.Add(this.empNameAnsTextBox);
+            this.empGroupBox.Controls.Add(this.empNameLabel);
+            this.empGroupBox.Controls.Add(this.empIdLabel);
+            this.empGroupBox.Location = new System.Drawing.Point(16, 26);
+            this.empGroupBox.Name = "empGroupBox";
+            this.empGroupBox.Size = new System.Drawing.Size(562, 54);
+            this.empGroupBox.TabIndex = 12;
+            this.empGroupBox.TabStop = false;
+            this.empGroupBox.Text = "Employee";
             // 
             // empIDTextBox
             // 
@@ -200,40 +200,40 @@
             this.empIDTextBox.TabIndex = 1;
             this.empIDTextBox.Leave += new System.EventHandler(this.empIDTextBox_TextLeave);
             // 
-            // groupBox2
+            // custGroupBox
             // 
-            this.groupBox2.Controls.Add(this.custAddressTextBox);
-            this.groupBox2.Controls.Add(this.custIdLabel);
-            this.groupBox2.Controls.Add(this.custLnameTextBox);
-            this.groupBox2.Controls.Add(this.customerIDTextBox);
-            this.groupBox2.Controls.Add(this.custNameLabel);
-            this.groupBox2.Controls.Add(this.custAddressLabel);
-            this.groupBox2.Controls.Add(this.custFnameTextBox);
-            this.groupBox2.Location = new System.Drawing.Point(16, 86);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(564, 111);
-            this.groupBox2.TabIndex = 13;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Customer";
+            this.custGroupBox.Controls.Add(this.custAddressTextBox);
+            this.custGroupBox.Controls.Add(this.custIdLabel);
+            this.custGroupBox.Controls.Add(this.custLnameTextBox);
+            this.custGroupBox.Controls.Add(this.customerIDTextBox);
+            this.custGroupBox.Controls.Add(this.custNameLabel);
+            this.custGroupBox.Controls.Add(this.custAddressLabel);
+            this.custGroupBox.Controls.Add(this.custFnameTextBox);
+            this.custGroupBox.Location = new System.Drawing.Point(16, 86);
+            this.custGroupBox.Name = "custGroupBox";
+            this.custGroupBox.Size = new System.Drawing.Size(564, 111);
+            this.custGroupBox.TabIndex = 13;
+            this.custGroupBox.TabStop = false;
+            this.custGroupBox.Text = "Customer";
             // 
-            // groupBox3
+            // itemsGroupBox
             // 
-            this.groupBox3.Controls.Add(this.pricelabel);
-            this.groupBox3.Controls.Add(this.priceTextBox);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.iDescTextBox);
-            this.groupBox3.Controls.Add(this.itemsListView);
-            this.groupBox3.Controls.Add(this.AddItemButton);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.itemEntryTextBox);
-            this.groupBox3.Controls.Add(this.qtyentrytextBox);
-            this.groupBox3.Controls.Add(this.ItemIDLabel);
-            this.groupBox3.Location = new System.Drawing.Point(16, 203);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(562, 229);
-            this.groupBox3.TabIndex = 14;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Items";
+            this.itemsGroupBox.Controls.Add(this.pricelabel);
+            this.itemsGroupBox.Controls.Add(this.priceTextBox);
+            this.itemsGroupBox.Controls.Add(this.descriptionLabel);
+            this.itemsGroupBox.Controls.Add(this.iDescTextBox);
+            this.itemsGroupBox.Controls.Add(this.itemsListView);
+            this.itemsGroupBox.Controls.Add(this.AddItemButton);
+            this.itemsGroupBox.Controls.Add(this.qtyLabel);
+            this.itemsGroupBox.Controls.Add(this.itemEntryTextBox);
+            this.itemsGroupBox.Controls.Add(this.qtyentrytextBox);
+            this.itemsGroupBox.Controls.Add(this.ItemIDLabel);
+            this.itemsGroupBox.Location = new System.Drawing.Point(16, 203);
+            this.itemsGroupBox.Name = "itemsGroupBox";
+            this.itemsGroupBox.Size = new System.Drawing.Size(562, 229);
+            this.itemsGroupBox.TabIndex = 14;
+            this.itemsGroupBox.TabStop = false;
+            this.itemsGroupBox.Text = "Items";
             // 
             // pricelabel
             // 
@@ -254,14 +254,14 @@
             this.priceTextBox.TabStop = false;
             this.priceTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label5
+            // descriptionLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(99, 24);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 13);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "Description:";
+            this.descriptionLabel.AutoSize = true;
+            this.descriptionLabel.Location = new System.Drawing.Point(99, 24);
+            this.descriptionLabel.Name = "descriptionLabel";
+            this.descriptionLabel.Size = new System.Drawing.Size(63, 13);
+            this.descriptionLabel.TabIndex = 21;
+            this.descriptionLabel.Text = "Description:";
             // 
             // iDescTextBox
             // 
@@ -325,14 +325,14 @@
             this.AddItemButton.UseVisualStyleBackColor = true;
             this.AddItemButton.Click += new System.EventHandler(this.AddItemButton_Click);
             // 
-            // label1
+            // qtyLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(466, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "Quantity:";
+            this.qtyLabel.AutoSize = true;
+            this.qtyLabel.Location = new System.Drawing.Point(466, 24);
+            this.qtyLabel.Name = "qtyLabel";
+            this.qtyLabel.Size = new System.Drawing.Size(49, 13);
+            this.qtyLabel.TabIndex = 19;
+            this.qtyLabel.Text = "Quantity:";
             // 
             // itemEntryTextBox
             // 
@@ -361,22 +361,22 @@
             this.ItemIDLabel.TabIndex = 17;
             this.ItemIDLabel.Text = "ID:";
             // 
-            // groupBox4
+            // saleGroupBox
             // 
-            this.groupBox4.Controls.Add(this.payComboBox);
-            this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Controls.Add(this.TotalTextBox);
-            this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.taxTextBox);
-            this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Controls.Add(this.subTotalTextBox);
-            this.groupBox4.Controls.Add(this.SubTotalLabel);
-            this.groupBox4.Location = new System.Drawing.Point(16, 448);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(562, 116);
-            this.groupBox4.TabIndex = 15;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Sale";
+            this.saleGroupBox.Controls.Add(this.payComboBox);
+            this.saleGroupBox.Controls.Add(this.paymentLabel);
+            this.saleGroupBox.Controls.Add(this.TotalTextBox);
+            this.saleGroupBox.Controls.Add(this.totalLabel);
+            this.saleGroupBox.Controls.Add(this.taxTextBox);
+            this.saleGroupBox.Controls.Add(this.taxLabel);
+            this.saleGroupBox.Controls.Add(this.subTotalTextBox);
+            this.saleGroupBox.Controls.Add(this.SubTotalLabel);
+            this.saleGroupBox.Location = new System.Drawing.Point(16, 448);
+            this.saleGroupBox.Name = "saleGroupBox";
+            this.saleGroupBox.Size = new System.Drawing.Size(562, 116);
+            this.saleGroupBox.TabIndex = 15;
+            this.saleGroupBox.TabStop = false;
+            this.saleGroupBox.Text = "Sale";
             // 
             // payComboBox
             // 
@@ -386,14 +386,14 @@
             this.payComboBox.Size = new System.Drawing.Size(121, 21);
             this.payComboBox.TabIndex = 5;
             // 
-            // label4
+            // paymentLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(271, 28);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Payment Type:";
+            this.paymentLabel.AutoSize = true;
+            this.paymentLabel.Location = new System.Drawing.Point(271, 28);
+            this.paymentLabel.Name = "paymentLabel";
+            this.paymentLabel.Size = new System.Drawing.Size(78, 13);
+            this.paymentLabel.TabIndex = 10;
+            this.paymentLabel.Text = "Payment Type:";
             // 
             // TotalTextBox
             // 
@@ -405,14 +405,14 @@
             this.TotalTextBox.TabStop = false;
             this.TotalTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label3
+            // totalLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(318, 53);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(34, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Total:";
+            this.totalLabel.AutoSize = true;
+            this.totalLabel.Location = new System.Drawing.Point(318, 53);
+            this.totalLabel.Name = "totalLabel";
+            this.totalLabel.Size = new System.Drawing.Size(34, 13);
+            this.totalLabel.TabIndex = 8;
+            this.totalLabel.Text = "Total:";
             // 
             // taxTextBox
             // 
@@ -424,14 +424,14 @@
             this.taxTextBox.TabStop = false;
             this.taxTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label2
+            // taxLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(72, 55);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Tax:";
+            this.taxLabel.AutoSize = true;
+            this.taxLabel.Location = new System.Drawing.Point(72, 55);
+            this.taxLabel.Name = "taxLabel";
+            this.taxLabel.Size = new System.Drawing.Size(28, 13);
+            this.taxLabel.TabIndex = 6;
+            this.taxLabel.Text = "Tax:";
             // 
             // subTotalTextBox
             // 
@@ -479,21 +479,22 @@
             this.ClientSize = new System.Drawing.Size(602, 609);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.saleGroupBox);
+            this.Controls.Add(this.itemsGroupBox);
+            this.Controls.Add(this.custGroupBox);
+            this.Controls.Add(this.empGroupBox);
             this.Name = "SalesForm";
             this.Text = "Sale";
             this.Load += new System.EventHandler(this.SalesForm_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.procAllEmployeeIdsBindingSource)).EndInit();
+            this.empGroupBox.ResumeLayout(false);
+            this.empGroupBox.PerformLayout();
+            this.custGroupBox.ResumeLayout(false);
+            this.custGroupBox.PerformLayout();
+            this.itemsGroupBox.ResumeLayout(false);
+            this.itemsGroupBox.PerformLayout();
+            this.saleGroupBox.ResumeLayout(false);
+            this.saleGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -512,28 +513,28 @@
         private System.Windows.Forms.BindingSource procAllEmployeeIdsBindingSource;
         private System.Windows.Forms.TextBox custLnameTextBox;
         private System.Windows.Forms.TextBox emplnameTextBox;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox empGroupBox;
+        private System.Windows.Forms.GroupBox custGroupBox;
+        private System.Windows.Forms.GroupBox itemsGroupBox;
+        private System.Windows.Forms.GroupBox saleGroupBox;
         private System.Windows.Forms.TextBox empIDTextBox;
         private System.Windows.Forms.TextBox taxTextBox;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label taxLabel;
         private System.Windows.Forms.TextBox subTotalTextBox;
         private System.Windows.Forms.Label SubTotalLabel;
         private System.Windows.Forms.Button AddItemButton;
         private System.Windows.Forms.TextBox itemEntryTextBox;
         private System.Windows.Forms.Label ItemIDLabel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label qtyLabel;
         private System.Windows.Forms.TextBox qtyentrytextBox;
         private System.Windows.Forms.ComboBox payComboBox;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label paymentLabel;
         private System.Windows.Forms.TextBox TotalTextBox;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label totalLabel;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.ListView itemsListView;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label descriptionLabel;
         private System.Windows.Forms.TextBox iDescTextBox;
         private System.Windows.Forms.Label pricelabel;
         private System.Windows.Forms.TextBox priceTextBox;

@@ -30,7 +30,7 @@
         {
             this.productListHeaderlabel = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.prodListView = new System.Windows.Forms.ListView();
             this.idcolumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.DescptioncolumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.QtycolumnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -57,19 +57,19 @@
             this.closeButton.UseVisualStyleBackColor = true;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
-            // listView1
+            // prodListView
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.prodListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.idcolumnHeader,
             this.DescptioncolumnHeader,
             this.QtycolumnHeader,
             this.pricecolumnHeader});
-            this.listView1.Location = new System.Drawing.Point(16, 43);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(470, 463);
-            this.listView1.TabIndex = 3;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.prodListView.Location = new System.Drawing.Point(16, 43);
+            this.prodListView.Name = "prodListView";
+            this.prodListView.Size = new System.Drawing.Size(470, 463);
+            this.prodListView.TabIndex = 3;
+            this.prodListView.UseCompatibleStateImageBehavior = false;
+            this.prodListView.View = System.Windows.Forms.View.Details;
             // 
             // idcolumnHeader
             // 
@@ -106,7 +106,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(503, 557);
             this.Controls.Add(this.addbutton);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.prodListView);
             this.Controls.Add(this.closeButton);
             this.Controls.Add(this.productListHeaderlabel);
             this.Name = "ProductsListForm";
@@ -121,7 +121,7 @@
 
         private System.Windows.Forms.Label productListHeaderlabel;
         private System.Windows.Forms.Button closeButton;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView prodListView;
         private System.Windows.Forms.ColumnHeader idcolumnHeader;
         private System.Windows.Forms.ColumnHeader DescptioncolumnHeader;
         private System.Windows.Forms.ColumnHeader QtycolumnHeader;

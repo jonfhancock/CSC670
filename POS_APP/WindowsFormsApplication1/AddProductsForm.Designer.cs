@@ -30,9 +30,9 @@
         {
             this.pricelabel = new System.Windows.Forms.Label();
             this.priceTextBox = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.descLabel = new System.Windows.Forms.Label();
             this.iDescTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.qtyLabel = new System.Windows.Forms.Label();
             this.qtyentrytextBox = new System.Windows.Forms.TextBox();
             this.ItemIDLabel = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
@@ -56,14 +56,14 @@
             this.priceTextBox.TabIndex = 3;
             this.priceTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label5
+            // descLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 54);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 13);
-            this.label5.TabIndex = 29;
-            this.label5.Text = "Description:";
+            this.descLabel.AutoSize = true;
+            this.descLabel.Location = new System.Drawing.Point(14, 54);
+            this.descLabel.Name = "descLabel";
+            this.descLabel.Size = new System.Drawing.Size(63, 13);
+            this.descLabel.TabIndex = 29;
+            this.descLabel.Text = "Description:";
             // 
             // iDescTextBox
             // 
@@ -72,14 +72,14 @@
             this.iDescTextBox.Size = new System.Drawing.Size(187, 20);
             this.iDescTextBox.TabIndex = 2;
             // 
-            // label1
+            // qtyLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(167, 91);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
-            this.label1.TabIndex = 27;
-            this.label1.Text = "Quantity:";
+            this.qtyLabel.AutoSize = true;
+            this.qtyLabel.Location = new System.Drawing.Point(167, 91);
+            this.qtyLabel.Name = "qtyLabel";
+            this.qtyLabel.Size = new System.Drawing.Size(49, 13);
+            this.qtyLabel.TabIndex = 27;
+            this.qtyLabel.Text = "Quantity:";
             // 
             // qtyentrytextBox
             // 
@@ -125,9 +125,9 @@
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.pricelabel);
             this.Controls.Add(this.priceTextBox);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.descLabel);
             this.Controls.Add(this.iDescTextBox);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.qtyLabel);
             this.Controls.Add(this.qtyentrytextBox);
             this.Controls.Add(this.ItemIDLabel);
             this.Name = "AddCustomersForm";
@@ -141,9 +141,9 @@
 
         private System.Windows.Forms.Label pricelabel;
         private System.Windows.Forms.TextBox priceTextBox;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label descLabel;
         private System.Windows.Forms.TextBox iDescTextBox;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label qtyLabel;
         private System.Windows.Forms.TextBox itemIdEntryTextBox;
         private System.Windows.Forms.TextBox qtyentrytextBox;
         private System.Windows.Forms.Label ItemIDLabel;
