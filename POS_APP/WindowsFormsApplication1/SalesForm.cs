@@ -21,10 +21,9 @@ namespace WindowsFormsApplication1
 
         private void SalesForm_Load(object sender, EventArgs e)
         {
-            String connectionString = "Data Source=localhost;Initial Catalog=POS;Persist Security Info=True;User ID=dbapp;Password=mar";
 
             SqlConnection connection =
-                       new SqlConnection(connectionString);
+                       new SqlConnection(Program.CONNECTION_STRING);
 
             SqlDataReader rdr  = null;
             try
@@ -62,68 +61,64 @@ namespace WindowsFormsApplication1
 
         }
 
-                
+
         private void empIDTextBox_TextLeave(object sender, EventArgs e)
         {
 
-                String connectionString = "Data Source=localhost;Initial Catalog=POS;Persist Security Info=True;User ID=dbapp;Password=mar";
+            string eID = empIDTextBox.Text;
 
-                string eID = empIDTextBox.Text;
+            SqlConnection connection =
+                       new SqlConnection(Program.CONNECTION_STRING);
+            SqlDataReader rdr = null;
+            try
+            {
 
-                SqlConnection connection =
-                           new SqlConnection(connectionString);
-                SqlDataReader rdr  = null;
-                try
-                {
+                connection.Open();
 
-                    connection.Open();
+                SqlCommand cmd = new SqlCommand(
+                    "Proc_EmployeeLookUpForASale", connection);
 
-                    SqlCommand cmd = new SqlCommand(
-                        "Proc_EmployeeLookUpForASale", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(
+                    new SqlParameter("@@empid", eID));
 
-                    cmd.Parameters.Add(
-                        new SqlParameter("@@empid", eID));
+                // execute the command
+                rdr = cmd.ExecuteReader();
+                rdr.Read();
 
-                    // execute the command
-                    rdr = cmd.ExecuteReader();
-                    rdr.Read();
+                this.empNameAnsTextBox.Text = rdr["fname"].ToString();
+                this.emplnameTextBox.Text = rdr["lname"].ToString();
+                rdr.Close();
 
-                    this.empNameAnsTextBox.Text = rdr["fname"].ToString();
-                    this.emplnameTextBox.Text = rdr["lname"].ToString();
-                    rdr.Close();
-
-                }
-                catch (Exception ex)
-                {
-                    connection.Close();
-                    if (empIDTextBox.Text != string.Empty)
-                    {
-                        connection.Close();
-                        empIDTextBox.Text = String.Empty;
-                        MessageBox.Show("Please verify the employee number. \nThe number you entered was not found.",
-                            "Employee not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        empIDTextBox.Focus();
-                    }
-
-                }
-                finally
+            }
+            catch (Exception ex)
+            {
+                connection.Close();
+                if (empIDTextBox.Text != string.Empty)
                 {
                     connection.Close();
+                    empIDTextBox.Text = String.Empty;
+                    MessageBox.Show("Please verify the employee number. \nThe number you entered was not found.",
+                        "Employee not found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    empIDTextBox.Focus();
                 }
+
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
 
                 
         private void customerIDTextBox_TextLeave(object sender, EventArgs e)
         {
 
-            String connectionString = "Data Source=localhost;Initial Catalog=POS;Persist Security Info=True;User ID=dbapp;Password=mar";
-
             string custID = customerIDTextBox.Text;
 
             SqlConnection connection =
-                       new SqlConnection(connectionString);
+                       new SqlConnection(Program.CONNECTION_STRING);
 
             SqlDataReader rdr  = null;
             
@@ -174,12 +169,10 @@ namespace WindowsFormsApplication1
         private void itemEntryTextBox_TextLeave(object sender, EventArgs e)
         {
 
-            String connectionString = "Data Source=localhost;Initial Catalog=POS;Persist Security Info=True;User ID=dbapp;Password=mar; Asynchronous Processing=true";
-
             string itemID = itemEntryTextBox.Text;
 
             SqlConnection connection =
-                       new SqlConnection(connectionString);
+                       new SqlConnection(Program.CONNECTION_STRING);
             SqlDataReader rdr  = null;
             try
             {
@@ -232,10 +225,8 @@ namespace WindowsFormsApplication1
 
         private void okButton_Click(object sender, EventArgs e)
         {
-
-            String connectionString = "Data Source=localhost;Initial Catalog=POS;Persist Security Info=True;User ID=dbapp;Password=mar";
             SqlConnection connection =
-                           new SqlConnection(connectionString);
+                           new SqlConnection(Program.CONNECTION_STRING);
             SqlDataReader rdr  = null;
             try
             {
@@ -260,11 +251,10 @@ namespace WindowsFormsApplication1
                 foreach (ListViewItem lvi in this.itemsListView.Items)
                 {
 
-                    String conString = "Data Source=localhost;Initial Catalog=POS;Persist Security Info=True;User ID=dbapp;Password=mar";
                     SqlConnection conItems =
-                                   new SqlConnection(conString);
+                                   new SqlConnection(Program.CONNECTION_STRING);
                     SqlConnection conInv =
-                                    new SqlConnection(conString);
+                                    new SqlConnection(Program.CONNECTION_STRING);
                     conItems.Open();
 
                     SqlCommand itemcmd = new SqlCommand(
@@ -286,9 +276,8 @@ namespace WindowsFormsApplication1
                     
                 }
 
-                String conSaleString = "Data Source=localhost;Initial Catalog=POS;Persist Security Info=True;User ID=dbapp;Password=mar";
                 SqlConnection conSale =
-                               new SqlConnection(conSaleString);
+                               new SqlConnection(Program.CONNECTION_STRING);
 
                 int paymentCode = payComboBox.SelectedIndex+1;
 

@@ -20,10 +20,8 @@ namespace WindowsFormsApplication1
         private void AddButton_Click(object sender, EventArgs e)
         {
 
-            String connectionString = "Data Source=localhost;Initial Catalog=POS;Persist Security Info=True;User ID=dbapp;Password=mar";
-
             SqlConnection connection =
-                       new SqlConnection(connectionString);
+                       new SqlConnection(Program.CONNECTION_STRING);
 
             try
             {
