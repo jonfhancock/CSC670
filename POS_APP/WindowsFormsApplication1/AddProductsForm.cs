@@ -10,13 +10,25 @@ using System.Data.SqlClient;
 
 namespace WindowsFormsApplication1
 {
-    public partial class AddCustomersForm : Form
+    /// <summary>
+    /// Allows for the addition of new products
+    /// </summary>
+    public partial class AddProductsForm : Form
     {
-        public AddCustomersForm()
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public AddProductsForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// User selected to save this information about a new product
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void addButton_Click(object sender, EventArgs e)
         {
 
@@ -50,7 +62,7 @@ namespace WindowsFormsApplication1
                 this.Close();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 connection.Close();
                 MessageBox.Show("The system was not able to add \nthe new items for sale.",

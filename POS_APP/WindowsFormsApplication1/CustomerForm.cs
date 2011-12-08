@@ -10,24 +10,42 @@ using System.Data.SqlClient;
 
 namespace WindowsFormsApplication1
 {
+    /// <summary>
+    /// A display of all the cusotmers that are known to the system
+    /// </summary>
     public partial class CustomerForm : Form
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public CustomerForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// The user selected to close the window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CloseButton_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        /// <summary>
+        /// On intializing the form the list view need to be setup
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CustomerForm_Load(object sender, EventArgs e)
         {
             setupListView();
         }
 
-
+        /// <summary>
+        /// Gather the customer data from the DB to put in the list view
+        /// </summary>
         private void setupListView()
         {
 
@@ -65,7 +83,7 @@ namespace WindowsFormsApplication1
                 rdr.Close();
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
                 connection.Close();
                 MessageBox.Show("The system was not able to retrieve \nthe list of customers.",
@@ -79,6 +97,12 @@ namespace WindowsFormsApplication1
 
         }
 
+        /// <summary>
+        /// The  user desires to add a new customer.  
+        /// This will launch the new customer Window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddButton_Click(object sender, EventArgs e)
         {
             AddCustForm ac = new AddCustForm();

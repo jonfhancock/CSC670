@@ -10,18 +10,34 @@ using System.Data.SqlClient;
 
 namespace WindowsFormsApplication1
 {
+    /// <summary>
+    /// A display of all the employees that are known to the system
+    /// </summary>
     public partial class EmployeeForm : Form
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public EmployeeForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// The user selected to close the window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CloseButton_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        /// <summary>
+        /// On intializing the form the list view need to be setup
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EmployeeForm_Load(object sender, EventArgs e)
         {
             
@@ -29,6 +45,9 @@ namespace WindowsFormsApplication1
 
         }
 
+        /// <summary>
+        /// Gather the customer data from the DB to put in the list view
+        /// </summary>
         private void setupListView()
         {
 
@@ -68,7 +87,7 @@ namespace WindowsFormsApplication1
                 rdr.Close();
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
                 connection.Close();
                 MessageBox.Show("The system was not able to retrieve \nthe list of employees.",
@@ -81,7 +100,12 @@ namespace WindowsFormsApplication1
             }
 
         }
-
+        /// <summary>
+        /// The  user desires to add a new employee.  
+        /// This will launch the new employee Window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void addButton_Click(object sender, EventArgs e)
         {
             AddEmpForm ae = new AddEmpForm();

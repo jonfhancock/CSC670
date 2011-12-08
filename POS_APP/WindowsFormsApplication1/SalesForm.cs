@@ -10,15 +10,24 @@ using System.Data.SqlClient;
 
 namespace WindowsFormsApplication1
 {
-
+    /// <summary>
+    /// The Form that supports the sale of the products
+    /// </summary>
     public partial class SalesForm : Form
     {
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public SalesForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Setup the Sales Form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SalesForm_Load(object sender, EventArgs e)
         {
 
@@ -47,7 +56,7 @@ namespace WindowsFormsApplication1
                 rdr.Close();
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
                 connection.Close();
                 customerIDTextBox.Text = String.Empty;
@@ -61,7 +70,11 @@ namespace WindowsFormsApplication1
 
         }
 
-
+        /// <summary>
+        /// Event handler to look up the Employee info for the employee id
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void empIDTextBox_TextLeave(object sender, EventArgs e)
         {
 
@@ -92,7 +105,7 @@ namespace WindowsFormsApplication1
                 rdr.Close();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 connection.Close();
                 if (empIDTextBox.Text != string.Empty)
@@ -111,7 +124,11 @@ namespace WindowsFormsApplication1
             }
         }
 
-                
+        /// <summary>
+        /// Event handler to look up the customer info for the customer id
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>                
         private void customerIDTextBox_TextLeave(object sender, EventArgs e)
         {
 
@@ -145,7 +162,7 @@ namespace WindowsFormsApplication1
                 rdr.Close();
                 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 rdr.Close();
                 connection.Close();
@@ -166,6 +183,11 @@ namespace WindowsFormsApplication1
             }
         }
 
+        /// <summary>
+        /// Event handler to look up the items info trying to be purchased
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void itemEntryTextBox_TextLeave(object sender, EventArgs e)
         {
 
@@ -198,7 +220,7 @@ namespace WindowsFormsApplication1
 
                 connection.Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 if (itemEntryTextBox.Text != string.Empty)
                 {
@@ -217,12 +239,22 @@ namespace WindowsFormsApplication1
         }
 
 
-
+        /// <summary>
+        /// The user canceled the sale
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cancelButton_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+
+        /// <summary>
+        /// The sale needs to be commited gather the data and save it to the DB
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void okButton_Click(object sender, EventArgs e)
         {
             SqlConnection connection =
@@ -248,6 +280,7 @@ namespace WindowsFormsApplication1
 
                 connection.Close();
            
+                //Gather all the items that were being sold
                 foreach (ListViewItem lvi in this.itemsListView.Items)
                 {
 
@@ -299,12 +332,13 @@ namespace WindowsFormsApplication1
                 salecmd.Parameters.Add(
                   new SqlParameter("@@cId", this.customerIDTextBox.Text));
 
+                //Commite the Sale to the DB
                 salecmd.ExecuteNonQuery();
                 conSale.Close();
                 
                 this.Close();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 connection.Close();
                 MessageBox.Show("This Sale had an error and was not saved. \nPlease reenter your sale.",
@@ -318,15 +352,27 @@ namespace WindowsFormsApplication1
 
         }
 
+        /// <summary>
+        /// Helper method to claculate totals by how many of the items are being purchased
+        /// </summary>
+        /// <param name="price"></param>
+        /// <param name="qty"></param>
+        /// <returns></returns>
         private string itemTotal(string price, string qty)
         {
             decimal total = new decimal();
             decimal dPrice = Convert.ToDecimal(price);
-            int iqty = (int)Convert.ToInt32(qty);
+            int iqty = Convert.ToInt32(qty);
 
             total = dPrice * iqty;
             return total.ToString();
         }
+
+        /// <summary>
+        /// Adds the item to the list of items to be purchased
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddItemButton_Click(object sender, EventArgs e)
         {
             string[] sItems = (new string[]
@@ -338,7 +384,6 @@ namespace WindowsFormsApplication1
                 itemTotal(priceTextBox.Text,qtyentrytextBox.Text)
             }  );
 
-
             ListViewItem lvi = new ListViewItem(sItems);
             this.itemsListView.Items.Add(lvi);
 
@@ -348,6 +393,9 @@ namespace WindowsFormsApplication1
 
         }
 
+        /// <summary>
+        /// Cleans up the item entry line after the add button has been sleected
+        /// </summary>
         private void cleanUpItemsToAdd()
         {
             int locationOfTotalInListView = 4;

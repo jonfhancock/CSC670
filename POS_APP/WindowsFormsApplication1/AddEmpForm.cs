@@ -10,13 +10,25 @@ using System.Data.SqlClient;
 
 namespace WindowsFormsApplication1
 {
+    /// <summary>
+    /// Allows for the adding of an employee
+    /// </summary>
     public partial class AddEmpForm : Form
     {
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public AddEmpForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// User selected to save this information about a new Employee
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddButton_Click(object sender, EventArgs e)
         {
 
@@ -50,7 +62,7 @@ namespace WindowsFormsApplication1
                 this.Close();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 connection.Close();
                 MessageBox.Show("The system was not able to add \nthe new employee.",

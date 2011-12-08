@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class AddCustomersForm
+    partial class AddProductsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -116,7 +116,7 @@
             this.productIdtextBox.TabIndex = 1;
             this.productIdtextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // AddCustomersForm
+            // AddProductsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -130,7 +130,7 @@
             this.Controls.Add(this.qtyLabel);
             this.Controls.Add(this.qtyentrytextBox);
             this.Controls.Add(this.ItemIDLabel);
-            this.Name = "AddCustomersForm";
+            this.Name = "AddProductsForm";
             this.Text = "Add Products ";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -144,7 +144,6 @@
         private System.Windows.Forms.Label descLabel;
         private System.Windows.Forms.TextBox iDescTextBox;
         private System.Windows.Forms.Label qtyLabel;
-        private System.Windows.Forms.TextBox itemIdEntryTextBox;
         private System.Windows.Forms.TextBox qtyentrytextBox;
         private System.Windows.Forms.Label ItemIDLabel;
         private System.Windows.Forms.Button addButton;
