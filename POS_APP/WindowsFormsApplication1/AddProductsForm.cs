@@ -31,47 +31,59 @@ namespace WindowsFormsApplication1
         /// <param name="e"></param>
         private void addButton_Click(object sender, EventArgs e)
         {
-
-            SqlConnection connection =
-                       new SqlConnection(Program.CONNECTION_STRING);
-
-            try
+            //Verify Names and ID are not blank; Default hire date is given by the form
+            if ((productIdtextBox.Text != string.Empty) &&
+                (iDescTextBox.Text != string.Empty) &&
+                (qtyentrytextBox.Text != string.Empty) &&
+                (priceTextBox.Text != string.Empty))
             {
-                connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
-                    "Proc_AddNewProduct", connection);
+                SqlConnection connection =
+                           new SqlConnection(Program.CONNECTION_STRING);
 
-                cmd.CommandType = CommandType.StoredProcedure;
+                try
+                {
+                    connection.Open();
 
-                int iqty = (int)Convert.ToInt32(qtyentrytextBox.Text);
-                decimal dPrice = Convert.ToDecimal(priceTextBox.Text);
+                    SqlCommand cmd = new SqlCommand(
+                        "Proc_AddNewProduct", connection);
 
-                cmd.Parameters.Add(
-                  new SqlParameter("@@pid", productIdtextBox.Text));
-                cmd.Parameters.Add(
-                  new SqlParameter("@@pdescript", iDescTextBox.Text));
-                cmd.Parameters.Add(
-                  new SqlParameter("@@price", dPrice));
-                cmd.Parameters.Add(
-                  new SqlParameter("@@pqtyonhand", iqty));
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.ExecuteNonQuery();
-                connection.Close();
+                    int iqty = Convert.ToInt32(qtyentrytextBox.Text);
+                    decimal dPrice = Convert.ToDecimal(priceTextBox.Text);
 
-                this.Close();
+                    cmd.Parameters.Add(
+                      new SqlParameter("@@pid", productIdtextBox.Text));
+                    cmd.Parameters.Add(
+                      new SqlParameter("@@pdescript", iDescTextBox.Text));
+                    cmd.Parameters.Add(
+                      new SqlParameter("@@price", dPrice));
+                    cmd.Parameters.Add(
+                      new SqlParameter("@@pqtyonhand", iqty));
 
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+
+                    this.Close();
+
+                }
+                catch (Exception)
+                {
+                    connection.Close();
+                    MessageBox.Show("The system was not able to add \nthe new items for sale.",
+                                    "New products were not Inserted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
-            catch (Exception)
+            else
             {
-                connection.Close();
-                MessageBox.Show("The system was not able to add \nthe new items for sale.",
-                                "New products were not Inserted", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            finally
-            {
-                connection.Close();
+                MessageBox.Show("All product information must be entered prior to adding.", "Error",
+                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

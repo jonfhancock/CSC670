@@ -31,45 +31,56 @@ namespace WindowsFormsApplication1
         /// <param name="e"></param>
         private void okButton_Click(object sender, EventArgs e)
         {
-
-            SqlConnection connection =
-                       new SqlConnection(Program.CONNECTION_STRING);
-
-            try
+            //Verify Names and ID are not blank; Address OK if blank
+            if ((customerIDTextBox.Text != string.Empty) &&
+                (custFnameTextBox.Text != string.Empty) &&
+                (custLnameTextBox.Text != string.Empty))
             {
-                connection.Open();
 
-                SqlCommand cmd = new SqlCommand(
-                    "Proc_AddNewCustomer", connection);
+                SqlConnection connection =
+                           new SqlConnection(Program.CONNECTION_STRING);
 
-                cmd.CommandType = CommandType.StoredProcedure;
+                try
+                {
+                    connection.Open();
+
+                    SqlCommand cmd = new SqlCommand(
+                        "Proc_AddNewCustomer", connection);
+
+                    cmd.CommandType = CommandType.StoredProcedure;
 
 
-                cmd.Parameters.Add(
-                  new SqlParameter("@@cid", customerIDTextBox.Text));
-                cmd.Parameters.Add(
-                  new SqlParameter("@@fname", custFnameTextBox.Text));
-                cmd.Parameters.Add(
-                  new SqlParameter("@@lname", custLnameTextBox.Text));
-                cmd.Parameters.Add(
-                  new SqlParameter("@@address", custAddressTextBox.Text));
+                    cmd.Parameters.Add(
+                      new SqlParameter("@@cid", customerIDTextBox.Text));
+                    cmd.Parameters.Add(
+                      new SqlParameter("@@fname", custFnameTextBox.Text));
+                    cmd.Parameters.Add(
+                      new SqlParameter("@@lname", custLnameTextBox.Text));
+                    cmd.Parameters.Add(
+                      new SqlParameter("@@address", custAddressTextBox.Text));
 
-                cmd.ExecuteNonQuery();
-                connection.Close();
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
 
-                this.Close();
+                    this.Close();
 
+                }
+                catch (Exception)
+                {
+                    connection.Close();
+                    MessageBox.Show("The system was not able to add \nthe new items for sale.",
+                                    "New products were not Inserted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
-            catch (Exception)
+            else
             {
-                connection.Close();
-                MessageBox.Show("The system was not able to add \nthe new items for sale.",
-                                "New products were not Inserted", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            finally
-            {
-                connection.Close();
+                MessageBox.Show("The Customer ID and Names must be entered.", "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
             }
         }
     }

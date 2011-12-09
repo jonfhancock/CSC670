@@ -32,46 +32,57 @@ namespace WindowsFormsApplication1
         private void AddButton_Click(object sender, EventArgs e)
         {
 
-            SqlConnection connection =
-                       new SqlConnection(Program.CONNECTION_STRING);
-
-            try
+            //Verify Names and ID are not blank; Default hire date is given by the form
+            if ((empIDTextBox.Text != string.Empty) &&
+                (empNameAnsTextBox.Text != string.Empty) &&
+                (emplnameTextBox.Text != string.Empty))
             {
-                connection.Open();
+                SqlConnection connection =
+                           new SqlConnection(Program.CONNECTION_STRING);
 
-                SqlCommand cmd = new SqlCommand(
-                    "Proc_AddNewEmployee", connection);
+                try
+                {
+                    connection.Open();
 
-                cmd.CommandType = CommandType.StoredProcedure;
+                    SqlCommand cmd = new SqlCommand(
+                        "Proc_AddNewEmployee", connection);
+
+                    cmd.CommandType = CommandType.StoredProcedure;
 
 
-                cmd.Parameters.Add(
-                  new SqlParameter("@@fname", empNameAnsTextBox.Text));
-                cmd.Parameters.Add(
-                  new SqlParameter("@@lname", emplnameTextBox.Text));
-                cmd.Parameters.Add(
-                  new SqlParameter("@@eid", empIDTextBox.Text));
-                cmd.Parameters.Add(
-                  new SqlParameter("@@hdate", hiredateTimePicker.Text));
-                cmd.Parameters.Add(
-                  new SqlParameter("@@address", empAddressTextBox.Text));
+                    cmd.Parameters.Add(
+                      new SqlParameter("@@fname", empNameAnsTextBox.Text));
+                    cmd.Parameters.Add(
+                      new SqlParameter("@@lname", emplnameTextBox.Text));
+                    cmd.Parameters.Add(
+                      new SqlParameter("@@eid", empIDTextBox.Text));
+                    cmd.Parameters.Add(
+                      new SqlParameter("@@hdate", hiredateTimePicker.Text));
+                    cmd.Parameters.Add(
+                      new SqlParameter("@@address", empAddressTextBox.Text));
 
-                cmd.ExecuteNonQuery();
-                connection.Close();
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
 
-                this.Close();
+                    this.Close();
 
+                }
+                catch (Exception)
+                {
+                    connection.Close();
+                    MessageBox.Show("The system was not able to add \nthe new employee.",
+                                    "New employee were not Inserted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                finally
+                {
+                    connection.Close();
+                }
             }
-            catch (Exception)
+            else
             {
-                connection.Close();
-                MessageBox.Show("The system was not able to add \nthe new employee.",
-                                "New employee were not Inserted", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            finally
-            {
-                connection.Close();
+                MessageBox.Show("The employee ID and Names must be entered.", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
