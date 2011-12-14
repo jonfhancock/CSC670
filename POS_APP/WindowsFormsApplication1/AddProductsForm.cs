@@ -6,7 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient; 
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace WindowsFormsApplication1
 {
@@ -39,7 +40,7 @@ namespace WindowsFormsApplication1
             {
 
                 SqlConnection connection =
-                           new SqlConnection(Program.CONNECTION_STRING);
+                           new SqlConnection(ConfigurationManager.ConnectionStrings["Connect"].ConnectionString);
 
                 try
                 {

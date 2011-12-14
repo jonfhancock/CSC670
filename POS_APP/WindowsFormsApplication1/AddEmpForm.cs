@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace WindowsFormsApplication1
 {
@@ -38,7 +39,7 @@ namespace WindowsFormsApplication1
                 (emplnameTextBox.Text != string.Empty))
             {
                 SqlConnection connection =
-                           new SqlConnection(Program.CONNECTION_STRING);
+                           new SqlConnection(ConfigurationManager.ConnectionStrings["Connect"].ConnectionString);
 
                 try
                 {

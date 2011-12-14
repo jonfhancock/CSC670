@@ -6,7 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient; 
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace WindowsFormsApplication1
 {
@@ -30,9 +31,21 @@ namespace WindowsFormsApplication1
         /// <param name="e"></param>
         private void SalesForm_Load(object sender, EventArgs e)
         {
-
+                      
             SqlConnection connection =
-                       new SqlConnection(Program.CONNECTION_STRING);
+                       new SqlConnection(ConfigurationManager.ConnectionStrings["Connect"].ConnectionString);
+
+            //SqlConnection connection =
+            //           new SqlConnection(ConfigurationManager.AppSettings["connectionStrings"]
+            ////Program.CONNECTION_STRING);
+            //);
+
+
+            /*
+            SqlConnection connection =
+                      new SqlConnection(Program.CONNECTION_STRING);            
+             */
+
 
             SqlDataReader rdr  = null;
             try
@@ -81,7 +94,7 @@ namespace WindowsFormsApplication1
             string eID = empIDTextBox.Text;
 
             SqlConnection connection =
-                       new SqlConnection(Program.CONNECTION_STRING);
+                       new SqlConnection(ConfigurationManager.ConnectionStrings["Connect"].ConnectionString);
             SqlDataReader rdr = null;
             try
             {
@@ -135,7 +148,7 @@ namespace WindowsFormsApplication1
             string custID = customerIDTextBox.Text;
 
             SqlConnection connection =
-                       new SqlConnection(Program.CONNECTION_STRING);
+                       new SqlConnection(ConfigurationManager.ConnectionStrings["Connect"].ConnectionString);
 
             SqlDataReader rdr  = null;
             
@@ -194,7 +207,7 @@ namespace WindowsFormsApplication1
             string itemID = itemEntryTextBox.Text;
 
             SqlConnection connection =
-                       new SqlConnection(Program.CONNECTION_STRING);
+                       new SqlConnection(ConfigurationManager.ConnectionStrings["Connect"].ConnectionString);
             SqlDataReader rdr  = null;
             try
             {
@@ -258,7 +271,7 @@ namespace WindowsFormsApplication1
         private void okButton_Click(object sender, EventArgs e)
         {
             SqlConnection connection =
-                           new SqlConnection(Program.CONNECTION_STRING);
+                           new SqlConnection(ConfigurationManager.ConnectionStrings["Connect"].ConnectionString);
             SqlDataReader rdr  = null;
             try
             {
@@ -285,9 +298,9 @@ namespace WindowsFormsApplication1
                 {
 
                     SqlConnection conItems =
-                                   new SqlConnection(Program.CONNECTION_STRING);
+                                   new SqlConnection(ConfigurationManager.ConnectionStrings["Connect"].ConnectionString);
                     SqlConnection conInv =
-                                    new SqlConnection(Program.CONNECTION_STRING);
+                                    new SqlConnection(ConfigurationManager.ConnectionStrings["Connect"].ConnectionString);
                     conItems.Open();
 
                     SqlCommand itemcmd = new SqlCommand(
@@ -310,7 +323,7 @@ namespace WindowsFormsApplication1
                 }
 
                 SqlConnection conSale =
-                               new SqlConnection(Program.CONNECTION_STRING);
+                               new SqlConnection(ConfigurationManager.ConnectionStrings["Connect"].ConnectionString);
 
                 int paymentCode = payComboBox.SelectedIndex+1;
 
@@ -403,19 +416,27 @@ namespace WindowsFormsApplication1
             itemEntryTextBox.Text = string.Empty;
             iDescTextBox.Text = string.Empty;
             priceTextBox.Text = string.Empty;
+
+            //Assume majority of time that only one of the products is being bought
             qtyentrytextBox.Text = "1";
 
-            decimal st = 0;
+            //The monetary total for the sale.  Alreadys has quantity * price determeined
+            decimal saleTotal = 0;
                 
+            //Get the quantity of the 
             foreach ( ListViewItem lvi in this.itemsListView.Items)
             {
 
-                st = st + Convert.ToDecimal(lvi.SubItems[locationOfTotalInListView].Text);
+                saleTotal = saleTotal + Convert.ToDecimal(lvi.SubItems[locationOfTotalInListView].Text);
             }
-            decimal taxRate = .081M;
-            decimal tax = Math.Round (taxRate * st, dp);
-            decimal total = Math.Round(st + tax, dp);
-            subTotalTextBox.Text = st.ToString();
+
+            //Deal with Tax
+            decimal tr = Convert.ToDecimal( ConfigurationManager.AppSettings["TaxRate"]);
+            decimal tax = Math.Round(tr * saleTotal, dp);
+            
+            //Determine Totals
+            decimal total = Math.Round(saleTotal + tax, dp);
+            subTotalTextBox.Text = saleTotal.ToString();
             taxTextBox.Text = tax.ToString();
             TotalTextBox.Text = total.ToString();
 

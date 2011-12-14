@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -41,7 +42,7 @@ namespace WindowsFormsApplication1
         {
            
             SqlConnection connection =
-                       new SqlConnection(Program.CONNECTION_STRING);
+                       new SqlConnection(ConfigurationManager.ConnectionStrings["Connect"].ConnectionString);
 
             SqlDataReader rdr  = null;
             try

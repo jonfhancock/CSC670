@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication1", "WindowsFormsApplication1\WindowsFormsApplication1.csproj", "{1530DDC8-5D2D-4AD0-995F-22F206EF2E01}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Appology POS", "WindowsFormsApplication1\Appology POS.csproj", "{1530DDC8-5D2D-4AD0-995F-22F206EF2E01}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1904C137-F841-4DA8-B3D2-4714F5494B1D}"
 	ProjectSection(SolutionItems) = preProject
