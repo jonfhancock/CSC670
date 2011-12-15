@@ -348,7 +348,9 @@ namespace WindowsFormsApplication1
                 //Commite the Sale to the DB
                 salecmd.ExecuteNonQuery();
                 conSale.Close();
-                
+
+                MessageBox.Show("A receipt would be printed for the customer at this time. \n Currently this is a future function.", "Print Receipt", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 this.Close();
             }
             catch (Exception)
